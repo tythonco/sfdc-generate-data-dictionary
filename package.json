@@ -7,11 +7,12 @@
     "sgd": "./bin/cli"
   },
   "scripts": {
+    "preinstall": "echo y | sfdx plugins:install https://github.com/tythonco/rest-explorer-sfdx-plugin.git && npm update --global sfdx-cli",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/gavignon/sfdc-generate-data-dictionary.git"
+    "url": "git://github.com/tythonco/sfdc-generate-data-dictionary.git"
   },
   "keywords": [
     "salesforce",
@@ -21,8 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "bytes": "^2.5.0",
-    "commander": "^2.11.0",
-    "excel4node": "^1.2.1",
-    "jsforce": "^1.8.0"
+    "commander": "^7.1.0",
+    "excel4node": "^1.2.1"
   }
 }

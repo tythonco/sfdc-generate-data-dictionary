@@ -30,13 +30,11 @@ $ sgd -h
 
   Options:
 
-    -u, --username [username]                             salesforce username
-    -p, --password [password]                             salesforce password
+    -u, --username [username]                             targetusername
     -l, --loginUrl [loginUrl]                             salesforce login URL [https://login.salesforce.com]
-    -a, --apiVersion [apiVersion]                         salesforce API Version [48.0]
     -c, --allCustomObjects [allCustomObjects]             retrieve all custom objects [true]
     -lc, --lucidchart [lucidchart]                        generate ERD file for Lucidchart [true]
-    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas
+    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Account,Contact,User], if set then allCustomObjects is ignored
     -D, --debug [debug]                                   generate debug log file [false]
     -d, --deleteFolders [deleteFolders]                   delete/clean temp folders [true]
     -e, --excludeManagedPackage [excludeManagedPackage]   exclude managed packaged [true]
@@ -47,7 +45,7 @@ $ sgd -h
 
 #### Example
 ```
-$ bin/cli -u "my.username@mydomain.com" -p "password" -l "https://test.salesforce.com" --sobjects "Account,Contact,Opportunity,Case" -c false
+$ bin/cli -u "targetusername" -l "https://test.salesforce.com" --sobjects "Account,Contact,Opportunity,Case" -c false
 ```
 
 ### Module
@@ -56,8 +54,7 @@ $ bin/cli -u "my.username@mydomain.com" -p "password" -l "https://test.salesforc
   var sgd = require('sfdc-generate-data-dictionary');
 
   sgd({
-      'username': '',
-      'password': options.password,
+      'username': 'targetUsername',
       'loginUrl': options.loginUrl,
       'projectName': '',
       'allCustomObjects': true,
@@ -90,7 +87,7 @@ CURRENT_DIR/node_modules/sfdc-generate-data-dictionary/files
 - [commander](https://github.com/tj/commander.js/) - The complete solution for node.js command-line interfaces, inspired by Ruby's commander.
 - [bytes](https://github.com/visionmedia/bytes.js) - Utility to parse a string bytes to bytes and vice-versa.
 - [excel4node](https://github.com/amekkawi/excel4node) - Node module to allow for easy Excel file creation.
-- [jsforce](https://github.com/jsforce/jsforce) - Salesforce API Library for JavaScript applications (both on Node.js and web browser)
+- [REST explorer sfdx plugin](https://github.com/tythonco/rest-explorer-sfdx-plugin) - Plugin for sfdx to provide direct access to the Salesforce REST API.
 
 ## Versioning
 
