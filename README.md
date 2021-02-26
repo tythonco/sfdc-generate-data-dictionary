@@ -32,11 +32,11 @@ $ sgd -h
 
     -u, --username [username]                             targetusername
     -l, --loginUrl [loginUrl]                             salesforce login URL [https://login.salesforce.com]
+    -n, --projectName [projectName]                       project name to use in generated data dictionary file
     -c, --allCustomObjects [allCustomObjects]             retrieve all custom objects [true]
     -lc, --lucidchart [lucidchart]                        generate ERD file for Lucidchart [true]
-    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Account,Contact,User], if set then allCustomObjects is ignored
+    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Lead,Account,Contact,Opportunity], if set then allCustomObjects is ignored
     -D, --debug [debug]                                   generate debug log file [false]
-    -d, --deleteFolders [deleteFolders]                   delete/clean temp folders [true]
     -e, --excludeManagedPackage [excludeManagedPackage]   exclude managed packaged [true]
     -ht, --hideTechFields [hideTechFields]                hide tech fields [false]
     -tp, --techFieldPrefix [techFieldPrefix]              Tech field prefix ['TECH_']
@@ -54,12 +54,11 @@ $ bin/cli -u "targetusername" -l "https://test.salesforce.com" --sobjects "Accou
   var sgd = require('sfdc-generate-data-dictionary');
 
   sgd({
-      'username': 'targetUsername',
-      'loginUrl': options.loginUrl,
+      'username': '',
+      'loginUrl': 'https://login.salesforce.com',
       'projectName': '',
       'allCustomObjects': true,
       'debug': false,
-      'cleanFolders': true,
       'output':'.'
       }, console.log);
 ```

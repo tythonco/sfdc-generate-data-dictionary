@@ -31,7 +31,7 @@ module.exports = (config, logger) => {
   config.excludeManagedPackage = (config.excludeManagedPackage === "true" || config.excludeManagedPackage === true);
 
   if (typeof config.projectName === 'undefined' || config.projectName === null) {
-    config.projectName = 'PROJECT';
+    config.projectName = '';
   }
   if (typeof config.allCustomObjects === 'undefined' || config.allCustomObjects === null) {
     config.allCustomObjects = true;
@@ -46,9 +46,10 @@ module.exports = (config, logger) => {
   if (typeof config.sobjects === 'undefined' || config.sobjects === null) {
     if (!config.allCustomObjects) {
       config.objects = [
+        'Lead',
         'Account',
         'Contact',
-        'User'
+        'Opportunity'
       ];
     }
   } else {
