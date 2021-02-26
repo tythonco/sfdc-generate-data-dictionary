@@ -16,8 +16,7 @@ program
   .option('-s, --sobjects [sobjects]', 'sObjects to retrieve separated with commas [Lead, Account, Contact, Opportunity]')
   .option('-D, --debug [debug]', 'generate debug log file [false]', false)
   .option('-e, --excludeManagedPackage [excludeManagedPackage]', 'exclude managed packaged [true]', true)  
-  .option('-ht, --hideTechFields [hideTechFields]', 'hide tech fields', false)
-  .option('-tp, --techFieldPrefix [techFieldPrefix]', 'Tech field prefix', 'TECH_')
+  .option('-h, --hiddenPrefixes [hiddenPrefixes]', 'field prefixes to hide from results')
   .option('-o, --output [dir]', 'salesforce data dictionary directory path [.]', '.')
   .action(function(options) {
     orchestrator(options, console.log)

@@ -38,8 +38,7 @@ $ sgd -h
     -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Lead,Account,Contact,Opportunity], if set then allCustomObjects is ignored
     -D, --debug [debug]                                   generate debug log file [false]
     -e, --excludeManagedPackage [excludeManagedPackage]   exclude managed packaged [true]
-    -ht, --hideTechFields [hideTechFields]                hide tech fields [false]
-    -tp, --techFieldPrefix [techFieldPrefix]              Tech field prefix ['TECH_']
+    -h, --hiddenPrefixes [hiddenPrefixes]                 Field prefixes to hide from results
     -o, --output [dir]                                    salesforce data dictionary directory path [.]
 ```
 

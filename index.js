@@ -70,13 +70,25 @@ module.exports = (config, logger) => {
     }
   }
 
+  if (typeof config.hiddenPrefixes === 'undefined' || config.hiddenPrefixes === null) {
+    config.hiddenPrefixList = [];
+  } else {
+    // If an array is passed to the module
+    if (Array.isArray(config.hiddenPrefixes)) {
+      config.hiddenPrefixList = config.hiddenPrefixes;
+    } else {
+      // Check and parse standObjects string for command-line
+      try {
+        config.hiddenPrefixList = config.hiddenPrefixes.split(',');
+      } catch (e) {
+        let errorMessage = 'Unable to parse hidden prefixes parameter';
+        if (config.debug)
+          errorMessage += ' : ' + e;
+        throw new Error(errorMessage);
+      }
+    }
+  }
 
-  if (typeof config.techFieldPrefix === 'undefined' || config.techFieldPrefix === null) {
-    config.techFieldPrefix = 'TECH_';
-  }
-  if (typeof config.hideTechFields === 'undefined' || config.hideTechFields === null) {
-    config.hideTechFields = false;
-  }
   if (typeof config.columns === 'undefined' || config.columns === null) {
     config.columns = {
       'ReadOnly': 5,
