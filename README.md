@@ -45,7 +45,7 @@ $ sgd -h
 
 #### Example
 ```
-$ bin/cli -u "targetusername" -l "https://test.salesforce.com" --sobjects "Account,Contact,Opportunity,Case" -c false
+$ bin/cli -u "targetusername" -l "https://test.salesforce.com" --sobjects "Account,Contact,Opportunity,Case"
 ```
 
 ### Module
