@@ -49,7 +49,8 @@ module.exports = (config, logger) => {
         'Lead',
         'Account',
         'Contact',
-        'Opportunity'
+        'Opportunity',
+        'Case'
       ];
     }
   } else {

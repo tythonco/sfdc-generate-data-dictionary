@@ -13,7 +13,7 @@ program
   .option('-n, --projectName [projectName], project name to use in generated data dictionary file')
   .option('-c, --allCustomObjects [allCustomObjects]', 'retrieve all custom objects [false]', false)
   .option('-lc, --lucidchart [lucidchart]', 'generate ERD file for Lucidchart [true]', true)
-  .option('-s, --sobjects [sobjects]', 'sObjects to retrieve separated with commas [Lead, Account, Contact, Opportunity]')
+  .option('-s, --sobjects [sobjects]', 'sObjects to retrieve separated with commas [Lead, Account, Contact, Opportunity, Case]')
   .option('-D, --debug [debug]', 'generate debug log file [false]', false)
   .option('-e, --excludeManagedPackage [excludeManagedPackage]', 'exclude managed packaged [true]', true)  
   .option('-h, --hiddenPrefixes [hiddenPrefixes]', 'field prefixes to hide from results')
