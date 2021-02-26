@@ -57,7 +57,7 @@ $ bin/cli -u "targetusername" -l "https://test.salesforce.com" --sobjects "Accou
       'username': '',
       'loginUrl': 'https://login.salesforce.com',
       'projectName': '',
-      'allCustomObjects': true,
+      'allCustomObjects': false,
       'debug': false,
       'output':'.'
       }, console.log);
@@ -95,6 +95,7 @@ CURRENT_DIR/node_modules/sfdc-generate-data-dictionary/files
 ## Authors
 
 - **Gil Avignon** - _Initial work_ - [gavignon](https://github.com/gavignon)
+- **Scott Covert** - _Updates_ - [scottbcovert](https://github.com/scottbcovert)
 
 ## License
 
