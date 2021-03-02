@@ -34,7 +34,7 @@ module.exports = (config, logger) => {
     config.projectName = '';
   }
   if (typeof config.allCustomObjects === 'undefined' || config.allCustomObjects === null) {
-    config.allCustomObjects = true;
+    config.allCustomObjects = false;
   }
   config.allCustomObjects = (config.allCustomObjects === "true" || config.allCustomObjects === true);
 
@@ -126,14 +126,26 @@ module.exports = (config, logger) => {
         utils.log('Authenticated to/as ' + config.username, config);
       }
       if (config.allCustomObjects) {
-        let globalDescribeJSON = ChildProcess.execFileSync('sfdx',
+        let globalDescribeRespWithAnsiCodes = ChildProcess.execFileSync('sfdx',
           ['dtq:rest',
               '-u', config.username,
               '-e', '/services/data/v51.0/sobjects'
-          ]);
-        let globalDescribe = JSON.parse(globalDescribeJSON);
-        for (let i = 0; i < globalDescribe.sobjects.length; i++) {
-          let object = globalDescribe.sobjects[i];
+          ],
+          { encoding: 'utf-8', maxBuffer: 100 * 1024 * 1024 }
+        ).toString();
+        let globalDescribeRespWithAnsiCodesAndJSON = ChildProcess.execFileSync('sfdx',
+          ['dtq:rest',
+              '-u', config.username,
+              '-e', '/services/data/v51.0/sobjects',
+              '--json'
+          ],
+          { encoding: 'utf-8', maxBuffer: 100 * 1024 * 1024 }
+        ).toString();
+        let globalDescribeRespNoAnsiCodes = globalDescribeRespWithAnsiCodes.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
+        let globalDescribeRespNoAnsiCodesWithJSON = globalDescribeRespWithAnsiCodesAndJSON.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
+        let globalDescribe = JSON.parse(globalDescribeRespNoAnsiCodesWithJSON.replace(globalDescribeRespNoAnsiCodes,''));
+        for (let i = 0; i < globalDescribe.result.sobjects.length; i++) {
+          let object = globalDescribe.result.sobjects[i];
           if (config.objects === undefined)
             config.objects = [];
 
@@ -161,10 +173,11 @@ module.exports = (config, logger) => {
         downloader.execute().then(result => {
           logger(result + ' downloaded');
           // Generate the excel file
-          builder.generate().then(result => {
-            resolve();
-          });
-        })
+          return builder.generate();
+
+        }).then(result => {
+          resolve();
+        });
       } else {
         if (config.objects.length > 0) {
           const downloader = new Downloader(config, logger);
