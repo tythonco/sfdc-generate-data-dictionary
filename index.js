@@ -34,7 +34,7 @@ module.exports = (config, logger) => {
     config.projectName = '';
   }
   if (typeof config.allCustomObjects === 'undefined' || config.allCustomObjects === null) {
-    config.allCustomObjects = false;
+    config.allCustomObjects = true;
   }
   config.allCustomObjects = (config.allCustomObjects === "true" || config.allCustomObjects === true);
 
@@ -44,17 +44,14 @@ module.exports = (config, logger) => {
   config.lucidchart = (config.lucidchart === "true" || config.lucidchart === true);
 
   if (typeof config.sobjects === 'undefined' || config.sobjects === null) {
-    if (!config.allCustomObjects) {
-      config.objects = [
+    config.objects = [
         'Lead',
         'Account',
         'Contact',
         'Opportunity',
         'Case'
-      ];
-    }
+    ];
   } else {
-    config.allCustomObjects = false;
     // If an array is passed to the module
     if (Array.isArray(config.sobjects)) {
       config.objects = config.sobjects;
