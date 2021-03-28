@@ -35,7 +35,7 @@ $ sgd -h
     -n, --projectName [projectName]                       project name to use in generated data dictionary file
     -c, --allCustomObjects [allCustomObjects]             retrieve all custom objects [true]
     -lc, --lucidchart [lucidchart]                        generate ERD file for Lucidchart [true]
-    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Lead, Account, Contact, Opportunity, Case]
+    -s, --sobjects [sobjects]                             sObjects to retrieve separated with commas [Account, Campaign, CampaignMember, Case, Contact, Event, Lead, Opportunity, OpportunityLineItem, Order, OrderItem, Pricebook2, PricebookEntry, Product2, Quote, QuoteLineItem, Task, User]
     -D, --debug [debug]                                   generate debug log file [false]
     -e, --excludeManagedPackage [excludeManagedPackage]   exclude managed packaged [true]
     -h, --hiddenPrefixes [hiddenPrefixes]                 Field prefixes to hide from results

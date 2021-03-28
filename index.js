@@ -45,11 +45,24 @@ module.exports = (config, logger) => {
 
   if (typeof config.sobjects === 'undefined' || config.sobjects === null) {
     config.objects = [
-        'Lead',
         'Account',
+        'Campaign',
+        'CampaignMember',
+        'Case',
         'Contact',
+        'Event',
+        'Lead',
         'Opportunity',
-        'Case'
+        'OpportunityLineItem',
+        'Order',
+        'OrderItem',
+        'Pricebook2',
+        'PricebookEntry',
+        'Product2',
+        'Quote',
+        'QuoteLineItem',
+        'Task',
+        'User'
     ];
   } else {
     // If an array is passed to the module
